@@ -1,0 +1,305 @@
+/* ============================================================
+   Simple Design System — Foundation Tokens
+   Colors, Type, Spacing, Radius, Shadows, Effects
+   Extracted from the Simple Design System Figma file.
+   ============================================================ */
+
+/* ----- Web font imports -------------------------------------- */
+/*  Inter and Roboto Mono are the primary type families.
+    Whyte (used for the cover hero, 188px) is a paid commercial
+    typeface; this system falls back to Inter Bold for that role
+    until a licensed copy of Whyte is supplied.                 */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* ============================================================
+     COLOR PRIMITIVES
+     Raw values referenced by the semantic tokens below. The
+     Brand ramp is intentionally neutral by default — re-point
+     these to your brand's color ramp to re-theme the system.
+     ============================================================ */
+
+  /* Base — pure neutrals */
+  --primitive-white:          rgb(255, 255, 255);
+  --primitive-black:          rgb(0, 0, 0);
+
+  /* Neutral ramp */
+  --primitive-neutral-50:     rgb(245, 245, 245);
+  --primitive-neutral-100:    rgb(241, 241, 241);
+  --primitive-neutral-200:    rgb(230, 230, 230);
+  --primitive-neutral-300:    rgb(227, 227, 227);
+  --primitive-neutral-400:    rgb(217, 217, 217);
+  --primitive-neutral-500:    rgb(205, 205, 205);
+  --primitive-neutral-600:    rgb(179, 179, 179);
+  --primitive-neutral-650:    rgb(178, 178, 178);
+  --primitive-neutral-700:    rgb(151, 151, 151);
+  --primitive-neutral-800:    rgb(118, 118, 118);
+  --primitive-neutral-850:    rgb(117, 117, 117);
+  --primitive-neutral-900:    rgb(67, 67, 67);
+  --primitive-neutral-950:    rgb(68, 68, 68);
+  --primitive-neutral-1000:   rgb(48, 48, 48);
+  --primitive-neutral-1050:   rgb(44, 44, 44);
+  --primitive-neutral-1100:   rgb(30, 30, 30);
+
+  /* Brand ramp — defaults to dark neutral. Override to re-theme. */
+  --primitive-brand-50:       rgb(245, 245, 245);
+  --primitive-brand-200:      rgb(217, 217, 217);
+  --primitive-brand-400:      rgb(118, 118, 118);
+  --primitive-brand-600:      rgb(68, 68, 68);
+  --primitive-brand-800:      rgb(44, 44, 44);
+  --primitive-brand-1000:     rgb(30, 30, 30);
+
+  /* Success — green */
+  --primitive-success-50:     rgb(231, 248, 238);
+  --primitive-success-200:    rgb(168, 224, 192);
+  --primitive-success-500:    rgb(46, 168, 100);
+  --primitive-success-700:    rgb(22, 119, 61);
+  --primitive-success-900:    rgb(13, 71, 35);
+
+  /* Warning — amber */
+  --primitive-warning-50:     rgb(255, 251, 235);
+  --primitive-warning-200:    rgb(255, 241, 194);
+  --primitive-warning-500:    rgb(191, 106, 2);
+  --primitive-warning-700:    rgb(143,  78, 12);
+  --primitive-warning-900:    rgb( 82,  37,  4);
+
+  /* Danger — red */
+  --primitive-danger-50:      rgb(254, 233, 231);
+  --primitive-danger-200:     rgb(247, 174, 170);
+  --primitive-danger-500:     rgb(236,  34,  31);
+  --primitive-danger-700:     rgb(192,  15,  12);
+  --primitive-danger-900:     rgb(144,  11,   9);
+
+  /* Annotation pink (Figma documentation overlays) */
+  --primitive-pink-50:        rgb(250, 225, 250);
+  --primitive-pink-300:       rgb(241, 158, 220);
+  --primitive-pink-700:       rgb(138,  34, 111);
+
+  /* ============================================================
+     SEMANTIC COLOR TOKENS
+     Use these everywhere in product UI. Surfaces have four
+     classes: Background, Border, Icon, Text. Each surface has
+     Default / Secondary / Tertiary plus :Hover and variants for
+     Disabled / Brand / Neutral / Success / Warning / Danger.
+     ============================================================ */
+
+  /* — Background — */
+  --bg-default:               var(--primitive-white);
+  --bg-default-hover:         var(--primitive-neutral-50);
+  --bg-secondary:             var(--primitive-neutral-50);
+  --bg-secondary-hover:       var(--primitive-neutral-100);
+  --bg-tertiary:              var(--primitive-neutral-200);
+  --bg-tertiary-hover:        var(--primitive-neutral-300);
+  --bg-disabled:              var(--primitive-neutral-100);
+  --bg-brand:                 var(--primitive-brand-1000);
+  --bg-brand-hover:           var(--primitive-brand-800);
+  --bg-brand-secondary:       var(--primitive-neutral-50);
+  --bg-brand-tertiary:        var(--primitive-neutral-200);
+  --bg-neutral:               var(--primitive-neutral-1100);
+  --bg-neutral-hover:         var(--primitive-neutral-950);
+  --bg-success:               var(--primitive-success-500);
+  --bg-success-secondary:     var(--primitive-success-200);
+  --bg-success-tertiary:      var(--primitive-success-50);
+  --bg-warning:               var(--primitive-warning-500);
+  --bg-warning-secondary:     var(--primitive-warning-200);
+  --bg-warning-tertiary:      var(--primitive-warning-50);
+  --bg-danger:                var(--primitive-danger-500);
+  --bg-danger-secondary:      var(--primitive-danger-200);
+  --bg-danger-tertiary:       var(--primitive-danger-50);
+
+  /* Utility backgrounds */
+  --bg-scrim:                 rgba(255, 255, 255, 0.7);
+  --bg-blanket:               rgba(  0,   0,   0, 0.5);
+  --bg-overlay:               rgba(  0,   0,   0, 0.7);
+
+  /* — Border — */
+  --border-default:           var(--primitive-neutral-400);
+  --border-secondary:         var(--primitive-neutral-300);
+  --border-tertiary:          var(--primitive-neutral-200);
+  --border-disabled:          var(--primitive-neutral-300);
+  --border-brand:             var(--primitive-brand-1000);
+  --border-neutral:           var(--primitive-neutral-800);
+  --border-success:           var(--primitive-success-500);
+  --border-warning:           var(--primitive-warning-500);
+  --border-danger:            var(--primitive-danger-500);
+
+  /* — Icon — */
+  --icon-default:             var(--primitive-neutral-1100);
+  --icon-secondary:           var(--primitive-neutral-850);
+  --icon-tertiary:            var(--primitive-neutral-600);
+  --icon-on:                  var(--primitive-white);
+  --icon-on-secondary:        var(--primitive-neutral-1100);
+  --icon-on-tertiary:         var(--primitive-neutral-1100);
+  --icon-disabled:            var(--primitive-neutral-600);
+  --icon-brand:               var(--primitive-brand-1000);
+  --icon-success:             var(--primitive-success-700);
+  --icon-warning:             var(--primitive-warning-700);
+  --icon-danger:              var(--primitive-danger-700);
+
+  /* — Text — */
+  --text-default:             var(--primitive-neutral-1100);
+  --text-secondary:           var(--primitive-neutral-850);
+  --text-tertiary:            var(--primitive-neutral-600);
+  --text-on:                  var(--primitive-neutral-50);
+  --text-on-secondary:        var(--primitive-neutral-1100);
+  --text-on-tertiary:         var(--primitive-neutral-1100);
+  --text-disabled:            var(--primitive-neutral-600);
+  --text-brand:               var(--primitive-brand-1000);
+  --text-link:                var(--primitive-brand-1000);
+  --text-success:             var(--primitive-success-700);
+  --text-warning:             var(--primitive-warning-900);
+  --text-danger:              var(--primitive-danger-900);
+
+  /* ============================================================
+     TYPOGRAPHY
+     Two families: Inter (UI + body) and Roboto Mono (code).
+     Whyte is the title-hero face — substituted with Inter Bold
+     until licensed font files are supplied.
+     ============================================================ */
+
+  --font-sans:          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono:          "Roboto Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-display:       "Whyte", "Inter", -apple-system, sans-serif;       /* substitution flagged */
+
+  --weight-regular:     400;
+  --weight-medium:      500;
+  --weight-semibold:    600;
+  --weight-bold:        700;
+
+  /* Type ramp — token : size / line-height / weight / tracking  */
+  --type-title-hero:        700 188px/0.95 var(--font-display);
+  --type-title-hero-track:  -0.03em;
+
+  --type-title:             700 72px/1.05 var(--font-sans);
+  --type-title-track:       -0.025em;
+
+  --type-subtitle:          400 48px/1.1 var(--font-sans);
+  --type-subtitle-track:    -0.02em;
+
+  --type-heading:           700 24px/1.2 var(--font-sans);
+  --type-heading-track:     -0.02em;
+
+  --type-subheading:        400 20px/1.2 var(--font-sans);
+  --type-subheading-track:  -0.01em;
+
+  --type-body:              400 16px/1.5 var(--font-sans);
+  --type-body-strong:       600 16px/1.5 var(--font-sans);
+  --type-body-emphasis:     400 italic 16px/1.5 var(--font-sans);
+
+  --type-body-small:        400 14px/1.4 var(--font-sans);
+  --type-body-small-strong: 600 14px/1.4 var(--font-sans);
+
+  --type-body-single:       400 16px/1 var(--font-sans);          /* "Body Base" single-line */
+  --type-body-single-small: 600 14px/1 var(--font-sans);          /* "Body Base Small Strong" single-line */
+
+  --type-input:             400 16px/1 var(--font-sans);
+  --type-button:            400 16px/1 var(--font-sans);
+  --type-label:             400 16px/1.4 var(--font-sans);
+  --type-caption:           400 12px/1.4 var(--font-sans);
+
+  --type-code:              400 16px/1 var(--font-mono);
+  --type-code-strong:       700 16px/1 var(--font-mono);
+
+  /* ============================================================
+     SPACE — Padding & Gap share one scale.
+     Token = px × 25 (so 400 → 16px).
+     ============================================================ */
+  --space-100:    4px;
+  --space-200:    8px;
+  --space-300:   12px;
+  --space-400:   16px;
+  --space-600:   24px;
+  --space-800:   32px;
+  --space-1200:  48px;
+  --space-1600:  64px;
+  --space-2400:  96px;
+  --space-4000: 160px;
+
+  /* ============================================================
+     RADIUS
+     ============================================================ */
+  --radius-small:   4px;
+  --radius-base:    8px;
+  --radius-large:  16px;
+  --radius-full:   9999px;
+  --radius-button: 24px;
+
+  /* ============================================================
+     SHADOWS — 6 levels, drop + inner. Soft, layered, neutral.
+     ============================================================ */
+  --shadow-100: 0 1px 2px 0 rgba(12, 12, 13, 0.05);
+  --shadow-200: 0 1px 4px 0 rgba(12, 12, 13, 0.05), 0 1px 4px 0 rgba(12, 12, 13, 0.10);
+  --shadow-300: 0 2px 6px 0 rgba(12, 12, 13, 0.05), 0 2px 8px 0 rgba(12, 12, 13, 0.10);
+  --shadow-400: 0 4px 10px 0 rgba(12, 12, 13, 0.06), 0 6px 16px 0 rgba(12, 12, 13, 0.10);
+  --shadow-500: 0 8px 16px 0 rgba(12, 12, 13, 0.07), 0 12px 32px 0 rgba(12, 12, 13, 0.12);
+  --shadow-600: 0 12px 24px 0 rgba(12, 12, 13, 0.08), 0 24px 56px 0 rgba(12, 12, 13, 0.15);
+
+  --shadow-inner-100: inset 0 1px 2px 0 rgba(12, 12, 13, 0.05);
+  --shadow-inner-200: inset 0 1px 4px 0 rgba(12, 12, 13, 0.05);
+  --shadow-inner-300: inset 0 2px 6px 0 rgba(12, 12, 13, 0.08);
+  --shadow-inner-400: inset 0 4px 10px 0 rgba(12, 12, 13, 0.10);
+  --shadow-inner-500: inset 0 6px 14px 0 rgba(12, 12, 13, 0.14);
+  --shadow-inner-600: inset 0 8px 20px 0 rgba(12, 12, 13, 0.18);
+
+  /* ============================================================
+     BLUR — Backdrop layers
+     ============================================================ */
+  --blur-overlay:  blur(0);                     /* Solid scrim, no blur */
+  --blur-blanket:  blur(4px);                   /* Behind modals/sheets */
+  --blur-layer:    blur(8px);                   /* Mid stack */
+  --blur-glass:    blur(12px);                  /* Glass surfaces over imagery */
+
+  /* ============================================================
+     MOTION — restrained, fast, never bouncy.
+     ============================================================ */
+  --duration-instant:  80ms;
+  --duration-fast:    160ms;
+  --duration-base:    240ms;
+  --duration-slow:    400ms;
+  --ease-standard:    cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized:  cubic-bezier(0.3, 0, 0, 1);
+  --ease-decel:       cubic-bezier(0, 0, 0, 1);
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT DEFAULTS
+   Apply these as a base layer so plain HTML inherits the
+   system's type ramp automatically.
+   ============================================================ */
+html,
+body {
+  background: var(--bg-default);
+  color: var(--text-default);
+  font: var(--type-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1 { font: var(--type-title);      letter-spacing: var(--type-title-track);      margin: 0; color: var(--text-default); }
+h2 { font: var(--type-subtitle);   letter-spacing: var(--type-subtitle-track);   margin: 0; color: var(--text-default); }
+h3 { font: var(--type-heading);    letter-spacing: var(--type-heading-track);    margin: 0; color: var(--text-default); }
+h4 { font: var(--type-subheading); letter-spacing: var(--type-subheading-track); margin: 0; color: var(--text-default); }
+h5 { font: var(--type-body-strong);                                              margin: 0; color: var(--text-default); }
+h6 { font: var(--type-body-small-strong);                                        margin: 0; color: var(--text-default); }
+
+p     { font: var(--type-body);        margin: 0; color: var(--text-default); }
+small { font: var(--type-body-small);  color: var(--text-secondary); }
+code,
+kbd,
+pre,
+samp  { font: var(--type-code); color: var(--text-default); }
+
+a {
+  color: var(--text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-default);
+  margin: var(--space-600) 0;
+}
